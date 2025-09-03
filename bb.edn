@@ -1,0 +1,5 @@
+{:paths ["src" "src/bbnote"]
+ :deps {org.babashka/cli {:mvn/version "0.8.66"}
+        babashka/fs {:mvn/version "0.5.27"}}}
+
+
