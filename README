@@ -1,0 +1,22 @@
+
+An utility written using clojure and babashka to rename pdf files and create the corresponding .md files based on doi
+To be run under linux 
+Written to replace a number of bash scripts and learn clojure and babashka.
+
+
+Commands:
+Usage: bbnote <command> <options>
+------------------------------------------------------------------
+examples:
+run1             -p dirname      -f filename.pdf                 rename one pdf  and make md file
+runall           -p dirname                                      rename all pdfs in the directory and make md files
+run1doi          -p dirname      -f filename.pdf         -d doi  rename one pdf based on provided doi and make md file
+rename&          -p dirname                                      rename all pdfs with & in the name in the directory and the corresponding md files
+removesp         -p dirname                                      rename all pdfs in the directory replacing spaces with underscores
+------------------------------------------------------------------
+Options:
+------------------------------------------------------------------
+  -p, --path       path to directory with pdf files
+  -f, --pdf        pdf file name
+  -d, --doi        doi of the paper
+  -h, --help false print help
