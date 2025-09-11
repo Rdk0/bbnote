@@ -1,7 +1,8 @@
 (ns bbnote.run1
   (:require
    [clojure.string :as str]
-   [bbnote.utils :as u]))
+   [bbnote.utils :as u]
+   [clojure.java.io :as io]))
 
 
 (defn process-one-pdf   
@@ -12,7 +13,7 @@
    - make md file based on bib info"
   [opts]
   (let [path (:path opts)
-        pdf  (:pdf opts)]
+        pdf  (io/file path (:pdf opts))]
     (println "opts " opts)
     (if-let [doi (u/doi-from-pdf pdf)] ;check if doi is retrieved successfully
       (if-let [bib (u/doi-to-bib doi)]      ;check if bib is retrieved successfully
@@ -23,7 +24,7 @@
               (println "Author-Year-Journal:" author-year-journal)
               (println "Bib content:" (:out bib))
               (println "Doi:" doi)
-              (u/rename-pdf pdf author-year-journal)
+              (u/rename-pdf pdf (io/file path  author-year-journal))
               (u/make-file-md path author-year-journal bib))
             (println "No author, year, or journal found in bib. Skipping processing file" pdf)))
         (println " no bib retrieved - skipping processing file" pdf))

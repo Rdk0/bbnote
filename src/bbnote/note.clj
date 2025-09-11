@@ -12,6 +12,11 @@
   (fs/directory? path))
 
 
+(defn file-exists?
+  [path pdf]
+  (fs/exists? (io/file path pdf)))
+
+
 (def cli-opts
 ;  {:spec
   {:path {:alias :p
@@ -19,7 +24,7 @@
           :validate dir-exists?}
    :pdf {:alias :f
          :desc "pdf file name"
-         :validate fs/exists?}
+         :validate file-exists?}
    :doi {:alias :d
          :desc "doi of the paper"}
          ;:coerce {:doi str}}
