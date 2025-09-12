@@ -5,16 +5,16 @@
 (require '[bbnote.renameamp :as r&])
 (require '[babashka.fs :as fs])
 (require '[bbnote.removespace :as rs])
-
+;(require '[clojure.java.io :as io])
 
 (defn dir-exists?
   [path]
   (fs/directory? path))
 
 
-(defn file-exists?
-  [path pdf]
-  (fs/exists? (io/file path pdf)))
+;; (defn file-exists?
+;;   [path pdf]
+;;   (fs/exists? (io/file path pdf)))
 
 
 (def cli-opts
@@ -23,8 +23,8 @@
           :desc "path to directory with pdf files"
           :validate dir-exists?}
    :pdf {:alias :f
-         :desc "pdf file name"
-         :validate file-exists?}
+         :desc "pdf file name"}
+         ;:validate file-exists?}; the validation requires a function with one arguemnt not two
    :doi {:alias :d
          :desc "doi of the paper"}
          ;:coerce {:doi str}}
