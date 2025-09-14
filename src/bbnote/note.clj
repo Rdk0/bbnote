@@ -55,7 +55,7 @@
   [{:cmds ["run1"]     :fn #(r1/process-one-pdf            (:opts %)) :spec cli-opts}
    {:cmds ["runall"]   :fn #(ra/process-pdfs-in-directory  (:opts %)) :spec cli-opts}
    {:cmds ["run1doi"]  :fn #(rd/process-one-pdf-use-doi    (:opts %)) :spec cli-opts}
-   {:cmds ["rename&"]  :fn #(r&/rename-pdfs-in-directories (:opts %)) :spec cli-opts}
+   {:cmds ["renameamp"]  :fn #(r&/rename-pdfs-in-directories (:opts %)) :spec cli-opts}
    {:cmds ["removesp"] :fn #(rs/rename-pdfs-in-directory   (:opts %)) :spec cli-opts}
    {:cmds []           :fn   help}])
 
