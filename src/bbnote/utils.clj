@@ -81,6 +81,15 @@
       (println "Failed to rename file."))))
 
 
+(defn list-files-in-directory "list all files in the directory [str, str -> (java object)]"
+  [path, ext]
+  (let [dir (io/file path)]
+    (->> (.listFiles dir)
+         (filter #(and (.isFile %) (str/ends-with? (str/lower-case (.getName %)) ext)))
+         (map #(.getName %))
+         (doall))))
+
+
 
     (comment
       (def pdf  "Trelford_2024_Cancers.pdf")

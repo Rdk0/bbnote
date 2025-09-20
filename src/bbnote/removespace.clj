@@ -12,10 +12,9 @@
 (defn rename-pdfs-in-directory "for every pdf in the directory remove_spaces" 
   [opts]
    (let [path (:path opts)
-         dir (io/file path)]
-      (doseq [file (file-seq dir)
-              :when (and (.isFile file) (str/ends-with? (str/lower-case (.getName file)) ".pdf"))]
-        (u/rename-pdf (.getName file) (remove-spaces-in-string  (.getName file))))))
+         files (u/list-files-in-directory path ".pdf")]
+     (doseq [file files]
+       (u/rename-pdf  file (remove-spaces-in-string  file)))))
 
 
 (comment 
